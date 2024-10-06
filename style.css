@@ -1,0 +1,206 @@
+body{
+    height: 100vh;
+    background: rgb(233, 233, 233);
+    margin: 0;
+
+}
+.cont{
+    margin: auto;
+    height: 100vh;
+    background: linear-gradient(-45.00deg, rgb(255, 140, 140) 0.177%, rgb(229, 197, 255) 41.219%, rgb(110, 221, 235) 66.434%, rgb(141, 255, 141) 99.613%);
+    
+}
+.btn__login{
+    width: 116px;
+    height: 51px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 33px;
+    background: rgba(0, 0, 0, 0);
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 17px;
+}
+
+.bg-body-tertiary {
+    background-color: none !important;
+    --bs-bg-opacity: 0;
+}
+.nav_link{
+    font-size: 17px;
+}
+.navbar-nav{
+    margin-left: 20px;
+}
+.btn__registration{
+    width: 168px;
+    height: 51px;
+    border-radius: 33px;
+    background: rgb(0, 0, 0);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 17px;
+}
+.nav-link{
+    font-size: 20px !important;
+    font-weight:500 !important;
+    color: black !important;
+}
+.logo{
+    /* Group 3 */
+    width: 58px;
+    height: 58px;
+    
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+    height: 100px;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.check_health-txt{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*navbar */
+
+
+
+
+
+.logo {
+    width: 58px;
+    height: 58px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: "Roboto", sans-serif;
+        font-weight: 500;
+}
+
+.nav-links a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #007bff;
+    /* Зміна кольору тексту на синій при наведенні */
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .cont {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .check_health-txt {
+        font-size: 30px;
+        /* Зменшуємо розмір тексту на мобільних */
+    }
+
+    .nav {
+        /* Вертикальне вирівнювання навігації */
+        align-items: flex-start;
+    }
+
+    .nav-link {
+        font-size: 16px;
+        /* Менший шрифт для навігації */
+    }
+
+    .btn__login{
+        width: 70px;
+        font-size: 14px;
+    }
+    .btn__registration {
+        width: 90px;
+        /* Ширина кнопок на весь екран */
+        margin-bottom: 10px;
+        font-size: 14px;
+        /* Відстань між кнопками */
+    }
+}
+
+/* Стилі для планшетів */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .check_health-txt {
+        font-size: 40px;
+        /* Зменшуємо текст для планшетів */
+    }
+
+    .nav {
+        flex-direction: row;
+        /* Горизонтальне вирівнювання для планшетів */
+    }
+
+    .nav-link {
+        font-size: 18px;
+        /* Зменшуємо шрифт на планшетах */
+    }
+
+    .btn__login{
+        width: 100px;
+            font-size: 15px;
+    }
+    .btn__registration {
+    width: 130px;
+        font-size: 15px;
+        /* Відновлюємо авто ширину для кнопок */
+    }
+}
