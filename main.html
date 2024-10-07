@@ -64,158 +64,15 @@
             <div id="description-box">
               <!-- Опис або інший текст -->
             </div>
-
             <div id="calculator-box">
               <h2>Калькулятор здоров'я онлайн</h2>
               <button id="start-btn">
-                <a href="index1.html">Розпочати</a>
+                <a href="calculator.html">Розпочати</a>
               </button>
             </div>
           </div>
         </div>
       </div>
     </main>
-
-    <script>
-      document.querySelectorAll(".dropdown-toggle").forEach((dropdown) => {
-        dropdown.addEventListener("click", function (event) {
-          event.preventDefault();
-          const menu = dropdown.nextElementSibling;
-          menu.style.display =
-            menu.style.display === "block" ? "none" : "block";
-        });
-      });
-
-      // Закрити меню, якщо клікнули поза його межами
-      document.addEventListener("click", function (event) {
-        const dropdownMenus = document.querySelectorAll(".dropdown-menu");
-        dropdownMenus.forEach((menu) => {
-          if (
-            !menu.previousElementSibling.contains(event.target) &&
-            !menu.contains(event.target)
-          ) {
-            menu.style.display = "none";
-          }
-        });
-      });
-
-      document.querySelectorAll(".dropdown-toggle").forEach((dropdown) => {
-        dropdown.addEventListener("click", function (event) {
-          event.preventDefault();
-          const menu = dropdown.nextElementSibling;
-          menu.style.display =
-            menu.style.display === "block" ? "none" : "block";
-        });
-      });
-
-      // Закрити меню, якщо клікнули поза його межами
-      document.addEventListener("click", function (event) {
-        const dropdownMenus = document.querySelectorAll(".dropdown-menu");
-        dropdownMenus.forEach((menu) => {
-          if (
-            !menu.previousElementSibling.contains(event.target) &&
-            !menu.contains(event.target)
-          ) {
-            menu.style.display = "none";
-          }
-        });
-      });
-
-      // Показати калькулятор після натискання на кнопку "Розпочати"
-      document
-        .getElementById("start-btn")
-        .addEventListener("click", function () {
-          document.getElementById("main-page").style.display = "none";
-          document.getElementById("calculator-page").style.display = "block";
-        });
-
-      // Логіка калькулятора
-      function calculate() {
-        // Показати екран завантаження
-        document.getElementById("loading").style.display = "block";
-
-        // Приховати поля вводу та кнопку
-        document.getElementById("input-fields").style.display = "none";
-
-        // Емулюємо затримку на обчислення (наприклад, 2 секунди)
-        setTimeout(function () {
-          // Ховати екран завантаження
-          document.getElementById("loading").style.display = "none";
-
-          // Отримати введені дані
-          const hb = document.getElementById("hb").value;
-          const rbc = document.getElementById("rbc").value;
-          const wbc = document.getElementById("wbc").value;
-          const plt = document.getElementById("plt").value;
-          const age = document.getElementById("age").value;
-
-          // Обчислити результати
-          let hbResult = checkHBNorm(age, hb);
-          let rbcResult = checkRBCNorm(age, rbc);
-          let wbcResult = checkWBCNorm(age, wbc);
-          let pltResult = checkPLTNorm(age, plt);
-
-          // Показати результати
-          document.getElementById("hb-result").textContent = hbResult;
-          document.getElementById("rbc-result").textContent = rbcResult;
-          document.getElementById("wbc-result").textContent = wbcResult;
-          document.getElementById("plt-result").textContent = pltResult;
-
-          // Просте рішення на основі результатів
-          let advice = "";
-          if (
-            hbResult.includes("занижений") ||
-            hbResult.includes("підвищений")
-          ) {
-            advice += "Рівень гемоглобіну потрібно перевірити. ";
-          }
-          if (
-            rbcResult.includes("занижені") ||
-            rbcResult.includes("підвищені")
-          ) {
-            advice += "Еритроцити вимагають перевірки. ";
-          }
-          if (
-            wbcResult.includes("занижені") ||
-            wbcResult.includes("підвищені")
-          ) {
-            advice += "Проблема з лейкоцитами, зверніться до лікаря. ";
-          }
-          if (
-            pltResult.includes("занижені") ||
-            pltResult.includes("підвищені")
-          ) {
-            advice += "Тромбоцити вимагають додаткової уваги. ";
-          }
-          document.getElementById("advice").textContent =
-            advice || "Ваші показники в нормі!";
-          document.getElementById("result").style.display = "block";
-        }, 2000); // Затримка на 2 секунди для імітації завантаження
-      }
-
-      function checkHBNorm(age, hb) {
-        if (hb < 120) return "Гемоглобін занижений.";
-        if (hb > 160) return "Гемоглобін підвищений.";
-        return "Гемоглобін в нормі.";
-      }
-
-      function checkRBCNorm(age, rbc) {
-        if (rbc < 4) return "Еритроцити занижені.";
-        if (rbc > 6) return "Еритроцити підвищені.";
-        return "Еритроцити в нормі.";
-      }
-
-      function checkWBCNorm(age, wbc) {
-        if (wbc < 4) return "Лейкоцити занижені.";
-        if (wbc > 10) return "Лейкоцити підвищені.";
-        return "Лейкоцити в нормі.";
-      }
-
-      function checkPLTNorm(age, plt) {
-        if (plt < 150) return "Тромбоцити занижені.";
-        if (plt > 450) return "Тромбоцити підвищені.";
-        return "Тромбоцити в нормі.";
-      }
-    </script>
   </body>
 </html>
