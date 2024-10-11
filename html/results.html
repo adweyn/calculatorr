@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Таблиця результатів калькулятора здоров'я</title>
+    <link rel="stylesheet" href="/styles/results.css" />
+    <style></style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h2>Таблиця з показниками здоров'я на 6 місяців</h2>
+
+    <table>
+      <tr>
+        <th>Вік</th>
+        <th>Стать</th>
+      </tr>
+      <tr>
+        <td style="background: white">15</td>
+        <td>Чоловік</td>
+      </tr>
+
+      <tr>
+        <th>Місяць</th>
+        <th>Гемоглобін (г/л)</th>
+        <th>Еритроцити (млн/мкл)</th>
+        <th>Лейкоцити (тис/мкл)</th>
+        <th>Тромбоцити (тис/мкл)</th>
+      </tr>
+      <tr>
+        <td>Місяць 1</td>
+        <td>100</td>
+        <td>3.5</td>
+        <td>3.0</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td>Місяць 2</td>
+        <td>110</td>
+        <td>3.8</td>
+        <td>4.5</td>
+        <td>120</td>
+      </tr>
+      <tr>
+        <td>Місяць 3</td>
+        <td>120</td>
+        <td>4.1</td>
+        <td>5.0</td>
+        <td>150</td>
+      </tr>
+      <tr>
+        <td>Місяць 4</td>
+        <td>130</td>
+        <td>4.4</td>
+        <td>6.0</td>
+        <td>180</td>
+      </tr>
+      <tr>
+        <td>Місяць 5</td>
+        <td>140</td>
+        <td>4.7</td>
+        <td>6.5</td>
+        <td>200</td>
+      </tr>
+      <tr>
+        <td>Місяць 6</td>
+        <td>145</td>
+        <td>5.0</td>
+        <td>7.2</td>
+        <td>220</td>
+      </tr>
+    </table>
+
+    <h2>Віджети зміни показників</h2>
+    <div class="widget-container">
+      <div class="widget">
+        <div>
+          <div class="label">Гемоглобін</div>
+          <div class="value">145</div>
+          <div class="change">+45</div>
+        </div>
+        <div class="progress-circle">85%</div>
+      </div>
+
+      <!-- Віджет для Еритроцитів -->
+      <div class="widget">
+        <div>
+          <div class="label">Еритроцити</div>
+          <div class="value">5.0</div>
+          <div class="change">+1.5</div>
+        </div>
+        <div class="progress-circle">90%</div>
+      </div>
+
+      <!-- Віджет для Лейкоцитів -->
+      <div class="widget">
+        <div>
+          <div class="label">Лейкоцити</div>
+          <div class="value">7.2</div>
+          <div class="change">+4.2</div>
+        </div>
+        <div class="progress-circle">75%</div>
+      </div>
+
+      <!-- Віджет для Тромбоцитів -->
+      <div class="widget">
+        <div>
+          <div class="label">Тромбоцити</div>
+          <div class="value">220</div>
+          <div class="change">+120</div>
+        </div>
+        <div class="progress-circle">90%</div>
+      </div>
+    </div>
+    <div style="width: 40%">
+      <canvas id="healthChart"></canvas>
+    </div>
+  </body>
+  <script>
+    var ctx = document.getElementById("healthChart").getContext("2d");
+    var healthChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [
+          "Місяць 1",
+          "Місяць 2",
+          "Місяць 3",
+          "Місяць 4",
+          "Місяць 5",
+          "Місяць 6",
+        ],
+        datasets: [
+          {
+            label: "Гемоглобін (г/л)",
+            data: [100, 110, 120, 130, 140, 145],
+            backgroundColor: "rgba(255, 99, 132, 0.6)",
+            yAxisID: "y1", // Використання першої осі Y
+          },
+          {
+            label: "Еритроцити (млн/мкл)",
+            data: [3.5, 3.8, 4.1, 4.4, 4.7, 5.0],
+            backgroundColor: "rgba(54, 162, 235, 0.6)",
+            yAxisID: "y2", // Використання другої осі Y
+          },
+          {
+            label: "Лейкоцити (тис/мкл)",
+            data: [3.0, 4.5, 5.0, 6.0, 6.5, 7.2],
+            backgroundColor: "rgba(75, 192, 192, 0.6)",
+            yAxisID: "y2", // Використання другої осі Y
+          },
+          {
+            label: "Тромбоцити (тис/мкл)",
+            data: [100, 120, 150, 180, 200, 220],
+            backgroundColor: "rgba(153, 102, 255, 0.6)",
+            yAxisID: "y1", // Використання першої осі Y
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y1: {
+            beginAtZero: true,
+            max: 250, // Максимум для гемоглобіну і тромбоцитів
+            position: "left", // Ліва вісь Y
+            title: {
+              display: true,
+              text: "Гемоглобін (г/л) / Тромбоцити (тис/мкл)",
+            },
+          },
+          y2: {
+            beginAtZero: true,
+            max: 10, // Максимум для еритроцитів і лейкоцитів
+            position: "right", // Права вісь Y
+            title: {
+              display: true,
+              text: "Еритроцити (млн/мкл) / Лейкоцити (тис/мкл)",
+            },
+          },
+        },
+      },
+    });
+  </script>
+</html>
